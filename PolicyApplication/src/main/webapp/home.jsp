@@ -4,24 +4,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Create Policy</title>
+<title>Policy Dashboard</title>
 </head>
 <body>
 
 	<form action="addPolicy">
+		<label>Create or Update Policy</label><br>
+		<label>Policy Number</label>
 		<input type="text" name="policyNumber"><br>
+		<label>First Name</label>
 		<input type="text" name="firstName"><br>
+		<label>Last Name</label>
 		<input type="text" name="lastName"><br>
+		<label>Start Date</label>
 		<input type="text" name="startDate"><br>
+		<label>End Date</label>
 		<input type="text" name="endDate"><br>
+		<label>Deductible in USD</label>
 		<input type="text" name="deductible"><br>
 		  <input type="submit"><br>
 	</form>
 	
 	<form action="getPolicy">
+		<label>Retrieve Policy</label><br>
+		<label>Policy Number to View</label>
 		<input type="text" name="policyNumber"><br>
 		  <input type="submit"><br>
 	</form>
 
+	<form action="deletePolicy">
+		<label>Delete Policy</label><br>
+		<label>Policy Number to Delete</label>
+		<input type="text" name="policyNumber"><br>
+		  <input type="submit"><br>
+	</form>
 </body>
 </html>

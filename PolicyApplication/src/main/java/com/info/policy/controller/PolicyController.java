@@ -1,9 +1,14 @@
 package com.info.policy.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.info.policy.dao.PolicyRepo;
@@ -35,5 +40,26 @@ public class PolicyController
 		Policy policy = repo.findById(policyNumber).orElse(new Policy());
 		mv.addObject(policy);
 		return mv;
+	}
+	
+	@RequestMapping("/policies")
+	@ResponseBody
+	public List<Policy> getPolicies() 
+	{
+		return repo.findAll();
+	}
+	
+	@RequestMapping("/policy/{policyNumber}")
+	@ResponseBody
+	public Optional<Policy> getPolicyRest(@PathVariable("policyNumber") int policyNumber) 
+	{
+		return repo.findById(policyNumber);
+	}
+	
+	@RequestMapping("/deletePolicy")
+	public String deletePolicy(int policyNumber) 
+	{
+		repo.deleteById(policyNumber);
+		return "home.jsp";
 	}
 }
